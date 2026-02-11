@@ -9,7 +9,7 @@ Author: Sat Garcia (sat@sandiego.edu)
 """
 
 from unittest.mock import Mock, MagicMock, mock_open, patch, call
-from lab14_critters import *
+from lab03_critters import *
 import io
 
 def run_tests():
