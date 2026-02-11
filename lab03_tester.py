@@ -1,7 +1,7 @@
 """
-Module: lab14_tester
+Module: lab03_tester
 
-Test cases for Lab 14 (Crittres)
+Test cases for Lab 03 (Crittres)
 
 DO NOT MODIFY THIS FILE IN ANY WAY!
 
