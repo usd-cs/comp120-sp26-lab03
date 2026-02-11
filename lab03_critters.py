@@ -129,6 +129,7 @@ class Cow(Critter):
         self.move_number = 0
 
     def __str__(self) -> str:
+        """ Returns the string representation of this cow, which is "M". """
         return "M"
 
     def get_move(self, neighbors: dict[Direction, str]) -> Direction:
@@ -152,12 +153,20 @@ class Cow(Critter):
         return self.dirs[i]
 
     def fight(self, opponent: str) -> Attack:
+        """
+        Randomly picks between pouncing and scratching.
+
+        Parameters:
+            opponent: The string representation of the opponent this cow is fighting.
+        """
         return random.choice([Attack.POUNCE, Attack.SCRATCH])
 
     def get_color(self):
+        """ Gets the color of this cow, which is always brown. """
         return "brown"
 
     def eat(self) -> bool:
+        """ Randomly decides whether this cow wants to eat or not. """
         return random.choice([True, False])
 
 
@@ -169,18 +178,6 @@ class Cow(Critter):
 
 
 """ DO NOT MODIFY ANYTHING PAST THIS POINT!!!! """
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class World:
