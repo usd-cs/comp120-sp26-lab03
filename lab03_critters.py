@@ -32,6 +32,29 @@ class Critter:
     parent/super class for all of the specific critter types we define.
 
     DO NOT MODIFY THIS CLASS IN ANY WAY!
+
+    Instance Variables:
+        x (int): the x coordinate of this critter in the world
+        y (int): the y coordinate of this critter in the world
+
+    Example:
+        >>> my_critter = Critter((5, 10))
+        >>> my_critter.x
+        5
+        >>> my_critter.y
+        10
+        >>> next_move = my_critter.get_move({Direction.NORTH: None, Direction.EAST: None, Direction.SOUTH: None, Direction.WEST: None})
+        >>> next_move.name
+        'CENTER'
+        >>> str(my_critter)
+        '?'
+        >>> attack =my_critter.fight("M")
+        >>> attack.name
+        'FORFEIT'
+        >>> my_critter.eat()
+        False
+        >>> my_critter.get_color()
+        'black'
     """
 
     def __init__(self, location: tuple[int, int]) -> None:
