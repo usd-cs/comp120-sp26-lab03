@@ -139,6 +139,9 @@ class Cow(Critter):
         Parameters:
             neighbors: Dictionary that tracks who is in each direction from this critter.
 
+        Returns:
+            The next direction this cow wants to move in (based on its pattern).
+
         Example:
             >>> bessy = Cow((3, 5))
             >>> moves = []
@@ -158,10 +161,13 @@ class Cow(Critter):
 
         Parameters:
             opponent: The string representation of the opponent this cow is fighting.
+
+        Returns:
+            The randomly chosen attack.
         """
         return random.choice([Attack.POUNCE, Attack.SCRATCH])
 
-    def get_color(self):
+    def get_color(self) -> str:
         """ Gets the color of this cow, which is always brown. """
         return "brown"
 
