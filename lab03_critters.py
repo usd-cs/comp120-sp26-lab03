@@ -19,39 +19,39 @@ class Critter:
     DO NOT MODIFY THIS CLASS IN ANY WAY!
     """
 
-    def __init__(self, location):
+    def __init__(self, location: tuple[int, int]) -> None:
         self.x = location[0]
         self.y = location[1]
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Returns a string representation of this critter.
         This representation is used when fighting another critter.
         """
         return "?"
 
-    def get_move(self, neighbors):
+    def get_move(self, neighbors: dict[Direction, str]) -> Direction:
         """ Gets the next move the critter wants to make. """
         return Direction.CENTER
 
-    def fight(self, opponent):
+    def fight(self, opponent: str) -> Attack:
         """ Gets the next fight move for the critter. """
         return Attack.FORFEIT
 
-    def eat(self):
+    def eat(self) -> bool:
         """ Returns True if the critter wants to eat, False otherwise. """
         return False
 
-    def get_color(self):
+    def get_color(self) -> str:
         """ Returns the color with which to display this critter. """
         return "black"
 
-    def set_location(self, x, y):
+    def set_location(self, x: int, y: int) -> None:
         """ Changes the location of this Critter. """
         self.x = x
         self.y = y
 
-    def set_world_dimensions(self, width, height):
+    def set_world_dimensions(self, width: int, height: int) -> None:
         """ Sets the width and height of world that critter lives in. """
         self.world_width = width
         self.world_height = height
@@ -67,14 +67,14 @@ Note: remove the "pass" statement after you start implementing the constructor.
 class Sloth(Critter):
     """ Replace this with a docstring for your class. """
 
-    def __init__(self, location, speed):
+    def __init__(self, location: tuple[int, int], speed: int) -> None:
         pass
 
 
 class ScaredCat(Critter):
     """ Replace this with a docstring for your class. """
 
-    def __init__(self, location):
+    def __init__(self, location: tuple[int, int]) -> None:
         pass
 
 
@@ -85,27 +85,27 @@ class Cow(Critter):
     DO NOT MODIFY THIS CLASS IN ANY WAY!
     """
 
-    def __init__(self, location):
+    def __init__(self, location: tuple[int, int]) -> None:
         super().__init__(location)
         self.dirs = [Direction.NORTH, Direction.SOUTH, Direction.EAST,
                 Direction.WEST]
         self.move_number = 0
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "M"
 
-    def get_move(self, neighbors):
+    def get_move(self, neighbors: dict[Direction, str]) -> Direction:
         i = self.move_number % 4
         self.move_number = self.move_number + 1
         return self.dirs[i]
 
-    def fight(self, opponent):
+    def fight(self, opponent: str) -> Attack:
         return random.choice([Attack.POUNCE, Attack.SCRATCH])
 
     def get_color(self):
         return "brown"
 
-    def eat(self):
+    def eat(self) -> bool:
         return random.choice([True, False])
 
 
