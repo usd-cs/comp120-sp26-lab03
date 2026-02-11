@@ -11,6 +11,21 @@ from tkinter.font import Font
 from enum import Enum
 
 
+class Direction(Enum):
+    """ Enumeration for directions in the world. """
+    NORTH = 1
+    EAST = 2
+    SOUTH = 3
+    WEST = 4
+    CENTER = 5
+
+class Attack(Enum):
+    """ Enumeration for possible Critter attacks. """
+    ROAR = 1
+    POUNCE = 2
+    SCRATCH = 3
+    FORFEIT = 4
+
 class Critter:
     """
     Representation of a critter in our world. This class will act as the
@@ -127,43 +142,9 @@ class Cow(Critter):
 
 
 
-class Direction(Enum):
-    """ Enumeration for directions in the world. """
-    NORTH = 1
-    EAST = 2
-    SOUTH = 3
-    WEST = 4
-    CENTER = 5
 
-class Attack(Enum):
-    """ Enumeration for possible Critter attacks. """
-    ROAR = 1
-    POUNCE = 2
-    SCRATCH = 3
-    FORFEIT = 4
 
-FOOD_COMA_PERIOD = 2 # how many times critter can eat before falling asleep
-FOOD_COMA_SLEEP_TIME = 20  # how long a critter sleeps after eating too much
-GESTATION_PERIOD = 40 # how long the mating period is for critters
-FOOD_RESPAWN_PERIOD = 50 # how often to spawn new food
 
-after_id = None
-root = None
-world = None
-
-turn_time_ms = 1000
-
-turn_number = 0
-turn_string = None
-
-start_button = None
-stop_button = None
-tick_button = None
-reset_button = None
-
-sloth_stats_string = None
-cow_stats_string = None
-torero_stats_string = None
 
 class World:
     """
@@ -434,6 +415,28 @@ class World:
                                                 font=small_font,
                                                 fill="black")
 
+FOOD_COMA_PERIOD = 2 # how many times critter can eat before falling asleep
+FOOD_COMA_SLEEP_TIME = 20  # how long a critter sleeps after eating too much
+GESTATION_PERIOD = 40 # how long the mating period is for critters
+FOOD_RESPAWN_PERIOD = 50 # how often to spawn new food
+
+after_id: str | None = None
+root: Tk | None = None
+world: World | None = None
+
+turn_time_ms: int = 1000
+
+turn_number: int = 0
+turn_string: StringVar | None = None
+
+start_button: Button | None = None
+stop_button: Button | None = None
+tick_button: Button | None = None
+reset_button: Button | None = None
+
+sloth_stats_string: StringVar | None = None
+cow_stats_string: StringVar | None = None
+torero_stats_string: StringVar | None = None
 
 def adjust_turn_time(scalar):
     """ Adjusts the amount of ms for each turn. """
@@ -441,7 +444,7 @@ def adjust_turn_time(scalar):
     turn_time_ms = 1000 // int(scalar)
 
 
-def create_window():
+def create_window() -> tuple[Tk, Frame]:
     """ Returns a new GUI window. """
     root = Tk()
     root.title("Critters Simulator")
@@ -450,7 +453,7 @@ def create_window():
     # make sure this pops in front of all other windows
     root.lift()
     root.attributes("-topmost", True)
-    root.grid_propagate(0)
+    root.grid_propagate(False)
 
     # Set up the frame where the world canvase will go
     canvas_frame = Frame(root)
@@ -461,7 +464,7 @@ def create_window():
     controls.grid(row=1, column=0)
 
     turn_speed_slider = Scale(controls, from_=1, to=30, label="Turn Speed",
-                              showvalue=0, orient=HORIZONTAL,
+                              showvalue=False, orient=HORIZONTAL,
                               command=adjust_turn_time)
     turn_speed_slider.set(10)
     turn_speed_slider.grid(row=0, column=0)
