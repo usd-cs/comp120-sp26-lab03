@@ -97,14 +97,13 @@ class Critter:
 
 
 """
-To Do: Complete the Sloth and ScaredCat classes below.
+To Do: Complete the SloredCat classes below.
 
 Note: remove the "pass" statement after you start implementing the constructor.
 """
 
 class Sloth(Critter):
     """ Replace this with a docstring for your class. """
-
     def __init__(self, location: tuple[int, int], speed: int) -> None:
         pass
 
@@ -133,6 +132,21 @@ class Cow(Critter):
         return "M"
 
     def get_move(self, neighbors: dict[Direction, str]) -> Direction:
+        """
+        Moves the cow in a specific cycle (what pattern does it form?)
+
+        Parameters:
+            neighbors: Dictionary that tracks who is in each direction from this critter.
+
+        Example:
+            >>> bessy = Cow((3, 5))
+            >>> moves = []
+            >>> for i in range(6):
+            ...     move = bessy.get_move({Direction.NORTH: None, Direction.EAST: None, Direction.SOUTH: None, Direction.WEST: None})
+            ...     moves.append(move.name)
+            >>> moves
+            ['NORTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'SOUTH']
+        """
         i = self.move_number % 4
         self.move_number = self.move_number + 1
         return self.dirs[i]
