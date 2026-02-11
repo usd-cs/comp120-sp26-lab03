@@ -156,15 +156,7 @@ class Cow(Critter):
         return self.dirs[i]
 
     def fight(self, opponent: str) -> Attack:
-        """
-        Randomly picks between pouncing and scratching.
-
-        Parameters:
-            opponent: The string representation of the opponent this cow is fighting.
-
-        Returns:
-            The randomly chosen attack.
-        """
+        """ Randomly picks between pouncing and scratching. """
         return random.choice([Attack.POUNCE, Attack.SCRATCH])
 
     def get_color(self) -> str:
