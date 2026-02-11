@@ -56,6 +56,9 @@ class Critter:
         >>> my_critter.get_color()
         'black'
     """
+    # type hints for instance variables
+    x: int
+    y: int
 
     def __init__(self, location: tuple[int, int]) -> None:
         self.x = location[0]
@@ -95,32 +98,24 @@ class Critter:
         self.world_height = height
 
 
-
-"""
-To Do: Complete the SloredCat classes below.
-
-Note: remove the "pass" statement after you start implementing the constructor.
-"""
-
-class Sloth(Critter):
-    """ Replace this with a docstring for your class. """
-    def __init__(self, location: tuple[int, int], speed: int) -> None:
-        pass
-
-
-class ScaredCat(Critter):
-    """ Replace this with a docstring for your class. """
-
-    def __init__(self, location: tuple[int, int]) -> None:
-        pass
-
-
 class Cow(Critter):
     """
     A cow in our critters world.
 
     DO NOT MODIFY THIS CLASS IN ANY WAY!
+
+    Instance Variables:
+        move_number (int): the number of moves this cow has made so far.
+
+    Example:
+        >>> bessy = Cow((3, 5))
+        >>> str(bessy)
+        'M'
+        >>> bessy.get_color()
+        'brown'
     """
+    # Type hints for instance variables (don't repeat the parent's instance variables here)
+    move_number: int
 
     def __init__(self, location: tuple[int, int]) -> None:
         super().__init__(location)
@@ -166,6 +161,27 @@ class Cow(Critter):
     def eat(self) -> bool:
         """ Randomly decides whether this cow wants to eat or not. """
         return random.choice([True, False])
+
+
+
+
+"""
+To Do: Complete the SloredCat classes below.
+
+Note: remove the "pass" statement after you start implementing the constructor.
+"""
+
+class Sloth(Critter):
+    """ Replace this with a docstring for your class. """
+    def __init__(self, location: tuple[int, int], speed: int) -> None:
+        pass
+
+
+class ScaredCat(Critter):
+    """ Replace this with a docstring for your class. """
+
+    def __init__(self, location: tuple[int, int]) -> None:
+        pass
 
 
 
