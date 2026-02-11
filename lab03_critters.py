@@ -109,6 +109,10 @@ class Cow(Critter):
 
     Example:
         >>> bessy = Cow((3, 5))
+        >>> bessy.x
+        3
+        >>> bessy.y
+        5
         >>> str(bessy)
         'M'
         >>> bessy.get_color()
