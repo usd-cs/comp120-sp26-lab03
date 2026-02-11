@@ -48,7 +48,7 @@ class Critter:
         'CENTER'
         >>> str(my_critter)
         '?'
-        >>> attack =my_critter.fight("M")
+        >>> attack = my_critter.fight("M")
         >>> attack.name
         'FORFEIT'
         >>> my_critter.eat()
